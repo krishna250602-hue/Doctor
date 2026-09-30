@@ -1,0 +1,305 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Design Tokens */
+    --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-family-stack: 'Inter', sans-serif;
+    --font-size-base: 16px;
+    --font-weight-base: 400;
+    --font-lineHeight-base: 27.2px;
+
+    /* Sky & White Color Palette */
+    --color-border-default: #e2e8f0;
+    --color-text-secondary: #0f172a;
+    --color-text-tertiary: #0284c7;
+    --color-text-inverse: #ffffff;
+    --color-surface-base: #f8fafc;
+    --color-surface-raised: #ffffff;
+    --color-surface-strong: #f0f9ff;
+    --color-border-muted: #bae6fd;
+
+    /* Spacing Scale */
+    --space-1: 2px;
+    --space-2: 4.8px;
+    --space-3: 8px;
+    --space-4: 9.6px;
+    --space-5: 10.4px;
+    --space-6: 12px;
+    --space-7: 12.8px;
+    --space-8: 14.4px;
+
+    /* Radius Tokens */
+    --radius-xs: 12px;
+    --radius-sm: 16px;
+    --radius-md: 20px;
+    --radius-lg: 24px;
+    --radius-xl: 40px;
+    --radius-2xl: 50px;
+
+    /* Shadow Tokens */
+    --shadow-1: rgba(2, 132, 199, 0.08) 0px 20px 40px -10px, rgba(0, 0, 0, 0.04) 0px 10px 20px -5px;
+    --shadow-2: rgba(2, 132, 199, 0.06) 0px 10px 30px 0px;
+    --shadow-3: rgba(15, 23, 42, 0.08) 0px 20px 40px 0px;
+    --shadow-4: rgba(2, 132, 199, 0.2) 0px 0px 3px 1px;
+
+    /* Motion Tokens */
+    --motion-duration-instant: 100ms;
+    --motion-duration-fast: 300ms;
+    --motion-duration-normal: 400ms;
+    --motion-duration-slow: 500ms;
+    --motion-duration-slower: 800ms;
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-family-primary);
+    background-color: var(--color-surface-base);
+    color: #1e293b;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    background-color: #f8fafc;
+  }
+
+  /* WCAG 2.2 AA Focus-Visible Standard */
+  :focus-visible {
+    outline: 2.5px solid #0284c7 !important;
+    outline-offset: 3px !important;
+  }
+}
+
+/* Background Gradients & Textures */
+.clinical-mesh-bg {
+  background:
+    radial-gradient(circle at 10% 20%, rgba(14, 165, 233, 0.16) 0%, transparent 45%),
+    radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.18) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, #f0f9ff 0%, #ffffff 100%);
+}
+
+.subtle-mesh-pattern {
+  background-image: radial-gradient(rgba(2, 132, 199, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Hero Glows */
+.hero-bg-glow {
+  position: absolute;
+  top: -10%;
+  right: -5%;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.22) 0%, rgba(56, 189, 248, 0.12) 50%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  animation: pulse-ring 6s ease-in-out infinite;
+}
+
+.hero-spine-glow {
+  position: absolute;
+  inset: -10%;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.25) 0%, rgba(2, 132, 199, 0.15) 60%, transparent 80%);
+  filter: blur(40px);
+  pointer-events: none;
+  border-radius: 50%;
+  animation: glow 5s ease-in-out infinite;
+}
+
+/* Jisha Prime 3D Floating Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(1deg);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Pulse Ring Animation */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.92);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.35;
+  }
+  100% {
+    transform: scale(0.92);
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 4s ease-in-out infinite;
+}
+
+/* Glowing Aura */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(14, 165, 233, 0.2);
+    opacity: 0.8;
+  }
+  50% {
+    box-shadow: 0 0 45px rgba(14, 165, 233, 0.4);
+    opacity: 1;
+  }
+}
+
+.animate-glow {
+  animation: glow 4s ease-in-out infinite;
+}
+
+/* Rotation Glow */
+@keyframes rotation_glow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-rotation-glow {
+  animation: rotation_glow 8s linear infinite;
+}
+
+/* Clockwise Orbit Rotations */
+@keyframes rotateClockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes counterRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.animate-rotateClockwise {
+  animation: rotateClockwise 24s linear infinite;
+}
+
+.animate-counterRotate {
+  animation: counterRotate 24s linear infinite;
+}
+
+/* Staggered Fade In Up Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s var(--ease-out) forwards;
+}
+
+.delay-100 {
+  animation-delay: 100ms;
+}
+.delay-200 {
+  animation-delay: 200ms;
+}
+.delay-300 {
+  animation-delay: 300ms;
+}
+.delay-400 {
+  animation-delay: 400ms;
+}
+.delay-500 {
+  animation-delay: 500ms;
+}
+
+/* Scroll Reveal Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--motion-duration-slow) var(--ease-out),
+              transform var(--motion-duration-slow) var(--ease-out);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition: opacity var(--motion-duration-slow) var(--ease-out),
+              transform var(--motion-duration-slow) var(--ease-out);
+}
+
+.reveal-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(32px);
+  transition: opacity var(--motion-duration-slow) var(--ease-out),
+              transform var(--motion-duration-slow) var(--ease-out);
+}
+
+.reveal-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Button & Interactive Lift */
+.button-lift {
+  transition: transform var(--motion-duration-fast) ease, box-shadow var(--motion-duration-fast) ease;
+}
+
+.button-lift:hover {
+  transform: translateY(-2.5px);
+  box-shadow: 0 12px 28px -5px rgba(2, 132, 199, 0.35);
+}
+
+.button-lift:active {
+  transform: translateY(0);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bae6fd;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0284c7;
+}
